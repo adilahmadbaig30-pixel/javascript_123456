@@ -1,0 +1,192 @@
+//task 1
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>second day task 1</title>
+</head>
+<body>
+    <button id="addbtn">Add Item</button>
+    <ul>
+        <li>item1</li>
+        <li>item2</li>
+    </ul>
+    <script>
+        let addbtn = document.getElementById("addbtn");
+
+        addbtn.addEventListener("click", function() {
+            const li = document.createElement("li");
+            li.innerText = "item3";
+
+            const ul = document.querySelector("ul");
+            ul.appendChild(li);
+        });
+    </script>
+</body>
+</html>
+//task 2
+<!DOCTYPE html>
+<html>
+<head>
+    <title>second day task 2</title>
+</head>
+<body>
+
+    <ul id="myList">
+        <li>Item 1 <button class="deleteBtn">Delete</button></li>
+        <li>Item 2 <button class="deleteBtn">Delete</button></li>
+        <li>Item 3 <button class="deleteBtn">Delete</button></li>
+        <li>Item 4 <button class="deleteBtn">Delete</button></li>
+        <li>Item 5 <button class="deleteBtn">Delete</button></li>
+    </ul>
+
+    <script>
+        let deleteButtons = document.querySelectorAll(".deleteBtn");
+
+        deleteButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+                button.parentElement.remove();
+            });
+        });
+    </script>
+
+</body>
+</html>
+//task 3
+<!DOCTYPE html>
+<html>
+<head>
+    <title>second day task 3</title>
+    <style>
+        .dark {
+            background-color: #222;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <button id="darkBtn">Toggle Dark Mode</button>
+
+    <script>
+        let darkBtn = document.getElementById("darkBtn");
+
+        darkBtn.addEventListener("click", function() {
+            document.body.classList.toggle("dark");
+        });
+    </script>
+</body>
+</html>
+//task 4
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Highlight List Item</title>
+    <style>
+        .active {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <ul id="list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+
+    <script>
+        let items = document.querySelectorAll("#list li");
+
+        items.forEach(function(item) {
+            item.addEventListener("click", function() {
+                
+                items.forEach(li => li.classList.remove("active"));
+                
+                this.classList.add("active");
+            });
+        });
+    </script>
+</body>
+</html>
+//task 5
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic List with Delete</title>
+</head>
+<body>
+    <button id="addBtn">Add Item</button>
+    <ul id="myList"></ul>
+
+    <script>
+        let addBtn = document.getElementById("addBtn");
+        let ul = document.getElementById("myList");
+        let count = 1;
+
+        addBtn.addEventListener("click", function() {
+            let li = document.createElement("li");
+            li.innerHTML = `Item ${count} <button class="delete">Delete</button>`;
+            ul.appendChild(li);
+            count++;
+        });
+
+        // Event Delegation
+        ul.addEventListener("click", function(e) {
+            if(e.target.classList.contains("delete")) {
+                e.target.parentElement.remove();
+            }
+        });
+    </script>
+</body>
+</html>
+
+//task 6
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercise 6 – Students</title>
+</head>
+<body>
+    <h2>Students with Marks &gt; 50</h2>
+    <ul id="passedStudents"></ul>
+
+    <h2>All Student Names</h2>
+    <ul id="studentNames"></ul>
+
+    <h2>Total Marks</h2>
+    <p id="totalMarks"></p>
+
+    <script>
+        const students = [
+            {name: "Ali", marks: 80},
+            {name: "Ahmed", marks: 40},
+            {name: "Sara", marks: 90}
+        ];
+
+        // 1️⃣ Students with marks > 50
+        const passedStudents = students.filter(student => student.marks > 50);
+        const passedUl = document.getElementById("passedStudents");
+
+        passedStudents.forEach(student => {
+            const li = document.createElement("li");
+            li.textContent = `${student.name} - ${student.marks} marks`;
+            passedUl.appendChild(li);
+        });
+
+        // 2️⃣ Total marks
+        const totalMarks = students.reduce((sum, student) => sum + student.marks, 0);
+        document.getElementById("totalMarks").textContent = totalMarks;
+
+        // 3️⃣ Array with only names
+        const studentNames = students.map(student => student.name);
+        const namesUl = document.getElementById("studentNames");
+
+        studentNames.forEach(name => {
+            const li = document.createElement("li");
+            li.textContent = name;
+            namesUl.appendChild(li);
+        });
+    </script>
+</body>
+</html>
