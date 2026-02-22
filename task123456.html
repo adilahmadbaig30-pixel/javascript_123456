@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    //task 1
+<h1 id="heading">Welcome</h1>
+
+<button onclick="changeText()">Click Me</button>
+
+<script>
+function changeText() {
+    document.getElementById("heading").innerHTML = "JavaScript is powerful!";
+}
+</script>
+//task2
+<p>Paragraph 1</p>
+<p>Paragraph 2</p>
+<p>Paragraph 3</p>
+
+<button onclick="makeBlue()">Make All Blue</button>
+
+<script>
+function makeBlue() {
+    let paragraphs = document.getElementsByTagName("p");
+
+    for (let i = 0; i < paragraphs.length; i++) {
+        paragraphs[i].style.color = "blue";
+    }
+}
+</script>
+//task3
+<title>Exercise 3</title>
+    <style>
+        .box {
+            width: 150px;
+            height: 100px;
+            background-color: gray;
+            margin: 10px 0;
+        }
+
+        .active {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box" id="myBox"></div>
+
+<button onclick="addClass()">Add Active Class</button>
+
+<script>
+function addClass() {
+    document.getElementById("myBox").classList.add("active");
+}
+</script>
+//task4
+<button onclick="showAlert()">Click Me</button>
+
+<script>
+function showAlert() {
+    alert("Button clicked!");
+}
+</script>
+//task5
+<div id="myDiv" 
+     onmouseover="changeColor()" 
+     onmouseout="resetColor()" 
+     style="width:150px; height:100px; background:pink;">
+</div>
+
+<script>
+function changeColor() {
+    document.getElementById("myDiv").style.backgroundColor = "yellow";
+}
+
+function resetColor() {
+    document.getElementById("myDiv").style.backgroundColor = "pink";
+}
+</script>
+//task6
+<input type="text" oninput="showText(this.value)">
+<p id="output"></p>
+
+<script>
+function showText(text) {
+    document.getElementById("output").innerHTML = text;
+}
+</script>
+</body>
+</html>
